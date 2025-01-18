@@ -1,26 +1,27 @@
 import { verifyInstallation } from 'nativewind';
-import { Pressable, Text, View } from 'react-native';
+import { View } from 'react-native';
+
+import AffordabilityIcon from '@/assets/icons/affordability.svg';
+import HouseIcon from '@/assets/icons/house.svg';
 
 import '../global.css';
-import { Link, LinkProps } from 'expo-router';
+import { Button } from '../components/Button';
+import { Stack } from 'expo-router';
 
 export default function Index() {
   verifyInstallation();
 
   return (
-    <View className="flex-1 justify-center items-center gap-4 bg-white">
-      <HomePageButton title="Affordability Calculator" href="/affordability" />
-      <HomePageButton title="Repayments Calculator" href="/repayments" />
+    <View className="flex-1 justify-center items-center bg-neutral-100 p-4">
+      <Stack.Screen options={{ headerBackTitle: 'Home' }} />
+      <View className="gap-4 w-full max-w-[600px]">
+        <Button href="/affordability" outline fullWidth icon={AffordabilityIcon}>
+          Affordability Calculator
+        </Button>
+        <Button href="/repayments" outline fullWidth icon={HouseIcon}>
+          Repayments Calculator
+        </Button>
+      </View>
     </View>
-  );
-}
-
-function HomePageButton({ title, href }: { title: string; href: LinkProps['href'] }) {
-  return (
-    <Link href={href} asChild>
-      <Pressable className="bg-blue-500 px-6 py-3 rounded-lg">
-        <Text className="text-white font-semibold text-lg">{title}</Text>
-      </Pressable>
-    </Link>
   );
 }
