@@ -7,12 +7,13 @@ import RepaymentsIcon from '@/assets/icons/repayments.svg';
 import '../global.css';
 import { Button } from '../components/Button';
 import { ScreenContainer } from '@/components/ScreenContainer';
+import { BottomBanner } from '@/components/BottomBanner';
 
 export default function Index() {
   verifyInstallation();
 
   return (
-    <ScreenContainer className="justify-center items-center">
+    <ScreenContainer>
       <View className="gap-4 w-full max-w-[600px]">
         <Button href="/affordability" outline fullWidth icon={AffordabilityIcon}>
           Affordability Calculator
@@ -21,6 +22,8 @@ export default function Index() {
           Repayments Calculator
         </Button>
       </View>
+
+      <BottomBanner label="Current Prime Lending Rate" value="11.25%" />
     </ScreenContainer>
   );
 }

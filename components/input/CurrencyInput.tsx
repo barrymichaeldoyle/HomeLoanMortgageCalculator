@@ -35,7 +35,7 @@ export function CurrencyInput({ value, onChangeText, ...props }: CurrencyInputPr
       {...props}
       value={formatCurrency(value)}
       onChangeText={handleChangeText}
-      keyboardType="numeric"
+      keyboardType="number-pad"
     />
   );
 }
