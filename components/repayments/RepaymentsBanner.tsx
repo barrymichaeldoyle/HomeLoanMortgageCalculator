@@ -53,7 +53,7 @@ function getFormattedMonthlyRepayment(
 
   // Return 0 if deposit is greater than or equal to purchase price
   if (safeDeposit >= purchasePrice) {
-    return `${currencySymbol}0`;
+    return `${currencySymbol} 0`;
   }
 
   // Convert annual interest rate to monthly (and from percentage to decimal)
@@ -64,7 +64,7 @@ function getFormattedMonthlyRepayment(
     const loanAmount = purchasePrice - safeDeposit;
     const monthlyRepayment = loanAmount / (repaymentPeriod * 12);
     const totalMonthlyPayment = Math.round(monthlyRepayment + safeMonthlyServiceFee);
-    return `${currencySymbol}${totalMonthlyPayment.toLocaleString(locale)}`;
+    return `${currencySymbol} ${totalMonthlyPayment.toLocaleString(locale)}`;
   }
 
   // Convert years to months
@@ -87,5 +87,5 @@ function getFormattedMonthlyRepayment(
   const totalMonthlyPayment = Math.round(monthlyRepayment + safeMonthlyServiceFee);
 
   // Format as currency string
-  return `${currencySymbol}${totalMonthlyPayment.toLocaleString(locale)}`;
+  return `${currencySymbol} ${totalMonthlyPayment.toLocaleString(locale)}`;
 }
