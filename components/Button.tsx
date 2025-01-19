@@ -31,7 +31,7 @@ export function Button({
       className={`
         flex-row items-center justify-center
         px-6 py-3 rounded-[12px]
-        ${outline ? 'border bg-white border-primary-500' : 'bg-primary-500'}
+        ${outline ? 'border bg-white border-primary-900' : 'bg-primary-900'}
         ${fullWidth ? 'w-full' : ''}
       `}
       onPress={onPress}
@@ -41,13 +41,13 @@ export function Button({
           <Icon
             width={24}
             height={24}
-            color={outline ? colors.primary[500] : colors.neutral[100]}
+            color={outline ? colors.primary[900] : colors.neutral[100]}
           />
         )}
         <Text
           className={`
             font-semibold text-lg
-            ${outline ? 'text-primary-500' : 'text-neutral-100'}
+            ${outline ? 'text-primary-900' : 'text-neutral-100'}
             ${fullWidth ? 'text-center' : ''}
           `}
         >
@@ -57,7 +57,7 @@ export function Button({
           <Icon
             width={24}
             height={24}
-            color={outline ? colors.primary[500] : colors.neutral[100]}
+            color={outline ? colors.primary[900] : colors.neutral[100]}
           />
         )}
       </View>

@@ -1,11 +1,25 @@
 import { Stack } from 'expo-router';
-import { View, Text } from 'react-native';
+
+import AffordabilityIcon from '@/assets/icons/affordability.svg';
+import { HeaderTitle } from '@/components/HeaderTitle';
+import { CurrencyInput } from '@/components/input/CurrencyInput';
+import { ScreenContainer } from '@/components/ScreenContainer';
+import { useState } from 'react';
 
 export default function AffordabilityCalculator() {
+  const [monthlyIncome, setMonthlyIncome] = useState(100_000);
+
   return (
-    <View className="flex-1 justify-center items-center bg-white">
-      <Stack.Screen options={{ headerBackTitle: 'Home' }} />
-      <Text className="text-xl">Affordability Calculator</Text>
-    </View>
+    <ScreenContainer>
+      <Stack.Screen
+        options={{
+          headerBackTitle: 'Home',
+          headerTitle: () => (
+            <HeaderTitle Icon={AffordabilityIcon}>Affordability Calculator</HeaderTitle>
+          ),
+        }}
+      />
+      <CurrencyInput label="Monthly Income" value={monthlyIncome} onChangeText={setMonthlyIncome} />
+    </ScreenContainer>
   );
 }

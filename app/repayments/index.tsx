@@ -1,11 +1,22 @@
 import { Stack } from 'expo-router';
-import { View, Text } from 'react-native';
+import { useState } from 'react';
+
+import RepaymentsIcon from '@/assets/icons/repayments.svg';
+import { HeaderTitle } from '@/components/HeaderTitle';
+import { ScreenContainer } from '@/components/ScreenContainer';
+import { CurrencyInput } from '@/components/input/CurrencyInput';
 
 export default function RepaymentsCalculator() {
+  const [purchasePrice, setPurchasePrice] = useState(1_500_000);
   return (
-    <View className="flex-1 justify-center items-center bg-white">
-      <Stack.Screen options={{ headerBackTitle: 'Home' }} />
-      <Text className="text-xl">Repayments Calculator</Text>
-    </View>
+    <ScreenContainer>
+      <Stack.Screen
+        options={{
+          headerBackTitle: 'Home',
+          headerTitle: () => <HeaderTitle Icon={RepaymentsIcon}>Repayments Calculator</HeaderTitle>,
+        }}
+      />
+      <CurrencyInput label="Purchase Price" value={purchasePrice} onChangeText={setPurchasePrice} />
+    </ScreenContainer>
   );
 }
