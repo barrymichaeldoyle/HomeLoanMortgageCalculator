@@ -58,7 +58,7 @@ describe('YearsInput', () => {
     const input = getByTestId('years-input');
 
     fireEvent.changeText(input, '');
-    expect(mockOnChangeText).toHaveBeenCalledWith(0);
+    expect(mockOnChangeText).not.toHaveBeenCalled();
   });
 
   it('rejects invalid characters', () => {
@@ -68,7 +68,7 @@ describe('YearsInput', () => {
     const input = getByTestId('years-input');
 
     fireEvent.changeText(input, 'abc');
-    expect(mockOnChangeText).toHaveBeenCalledWith(0);
+    expect(mockOnChangeText).not.toHaveBeenCalled();
   });
 
   it('enforces maximum value of 100', () => {

@@ -1,5 +1,6 @@
 // ZA constants
 export const PRIME_LENDING_RATE_ZA = 11.25;
+export const DEFAULT_MONTHLY_REPAYMENTS_ZA = 100_000;
 export const DEFAULT_MONTHLY_SERVICE_FEE_ZA = 69;
 export const DEFAULT_PURCHASE_PRICE_ZA = 1_500_000;
 export const DEFAULT_DEPOSIT_ZA = 100_000;

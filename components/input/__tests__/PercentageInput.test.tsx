@@ -121,7 +121,7 @@ describe('PercentageInput', () => {
     const input = getByTestId('percentage-input');
 
     fireEvent.changeText(input, '');
-    expect(mockOnChangeText).toHaveBeenCalledWith(0);
+    expect(mockOnChangeText).not.toHaveBeenCalledWith();
   });
 
   it('rejects invalid characters', () => {

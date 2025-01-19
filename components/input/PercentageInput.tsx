@@ -55,8 +55,8 @@ export function PercentageInput({
 
     setTextValue(sanitizedText);
 
-    if (sanitizedText === '' || sanitizedText === '.') {
-      onChangeText(0);
+    // Handle decimal point only case
+    if (sanitizedText === '.') {
       return;
     }
 
