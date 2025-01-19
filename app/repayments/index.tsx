@@ -9,6 +9,11 @@ import { YearsInput } from '@/components/input/YearsInput';
 import { ScreenContainer } from '@/components/ScreenContainer';
 import { useRepaymentsStore } from '@/stores/repaymentsStore';
 import { RepaymentsBanner } from '@/components/repayments/RepaymentsBanner';
+import {
+  DEFAULT_INTEREST_RATE_ZA,
+  DEFAULT_LOAN_TERM_ZA,
+  DEFAULT_MONTHLY_SERVICE_FEE_ZA,
+} from '@/constants/constants';
 
 export default function RepaymentsCalculator() {
   const {
@@ -43,6 +48,8 @@ export default function RepaymentsCalculator() {
           label="Monthly Service Fee"
           value={monthlyServiceFee}
           onChangeText={setMonthlyServiceFee}
+          defaultValue={DEFAULT_MONTHLY_SERVICE_FEE_ZA}
+          resetText="Reset to default"
         />
         <View className="flex-row gap-6">
           <View className="flex-1">
@@ -50,6 +57,8 @@ export default function RepaymentsCalculator() {
               label="Interest Rate"
               value={interestRate}
               onChangeText={setInterestRate}
+              defaultValue={DEFAULT_INTEREST_RATE_ZA}
+              resetText={`Reset to prime`}
             />
           </View>
           <View className="flex-1">
@@ -57,6 +66,8 @@ export default function RepaymentsCalculator() {
               label="Loan Term"
               value={repaymentPeriod}
               onChangeText={setRepaymentPeriod}
+              defaultValue={DEFAULT_LOAN_TERM_ZA}
+              resetText={`Reset to ${DEFAULT_LOAN_TERM_ZA} years`}
             />
           </View>
         </View>

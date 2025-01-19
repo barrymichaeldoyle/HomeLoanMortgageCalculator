@@ -6,9 +6,19 @@ import { colors } from '@/constants/colors';
 export interface InputProps extends TextInputProps {
   label: string;
   rightElement?: string;
+  showReset?: boolean;
+  onReset?: () => void;
+  resetText?: string;
 }
 
-export function Input({ label, rightElement, ...props }: InputProps) {
+export function Input({
+  label,
+  rightElement,
+  showReset,
+  onReset,
+  resetText = 'Reset to default',
+  ...props
+}: InputProps) {
   const inputRef = useRef<TextInput>(null);
 
   function handleContainerPress() {
@@ -22,7 +32,7 @@ export function Input({ label, rightElement, ...props }: InputProps) {
         <View className="w-full h-10 rounded-[10px] bg-white border border-neutral-300 flex-row items-center">
           <TextInput
             ref={inputRef}
-            className="flex-1 min-w-0 px-3 h-full rounded-[10px]"
+            className="flex-1 min-w-0 px-3 h-full rounded-[10px] tracking-wide"
             placeholderTextColor={colors.neutral[500]}
             {...props}
           />
@@ -32,6 +42,13 @@ export function Input({ label, rightElement, ...props }: InputProps) {
             </Text>
           )}
         </View>
+        {showReset && (
+          <Pressable onPress={onReset}>
+            <Text className="text-xs text-primary-500 font-semibold mt-[-2px] ml-2">
+              {resetText}
+            </Text>
+          </Pressable>
+        )}
       </View>
     </Pressable>
   );

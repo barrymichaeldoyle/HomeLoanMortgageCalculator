@@ -1,13 +1,25 @@
-import { Input, InputProps } from './Input';
-import React from 'react';
+import { useEffect, useState } from 'react';
 
-interface PercentageInputProps extends Omit<InputProps, 'value' | 'onChangeText'> {
+import { Input, InputProps } from './Input';
+
+interface PercentageInputProps extends Omit<InputProps, 'value' | 'onChangeText' | 'defaultValue'> {
   value: number;
   onChangeText: (value: number) => void;
+  defaultValue?: number;
 }
 
-export function PercentageInput({ value, onChangeText, ...props }: PercentageInputProps) {
-  const [textValue, setTextValue] = React.useState(value.toString());
+export function PercentageInput({
+  value,
+  onChangeText,
+  defaultValue,
+  ...props
+}: PercentageInputProps) {
+  const [textValue, setTextValue] = useState(value.toString());
+  const showReset = defaultValue !== undefined && value !== defaultValue;
+
+  useEffect(() => {
+    setTextValue(value.toString());
+  }, [value]);
 
   function handleChangeText(text: string) {
     // Only allow numbers, a single decimal point, and comma (which we'll convert to period)
@@ -54,6 +66,12 @@ export function PercentageInput({ value, onChangeText, ...props }: PercentageInp
     }
   }
 
+  function handleReset() {
+    if (defaultValue !== undefined) {
+      onChangeText(defaultValue);
+    }
+  }
+
   return (
     <Input
       {...props}
@@ -61,6 +79,8 @@ export function PercentageInput({ value, onChangeText, ...props }: PercentageInp
       onChangeText={handleChangeText}
       keyboardType="decimal-pad"
       rightElement="%"
+      showReset={showReset}
+      onReset={handleReset}
     />
   );
 }

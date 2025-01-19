@@ -1,13 +1,20 @@
-import { Input, InputProps } from './Input';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-interface YearsInputProps extends Omit<InputProps, 'value' | 'onChangeText'> {
+import { Input, InputProps } from './Input';
+
+interface YearsInputProps extends Omit<InputProps, 'value' | 'onChangeText' | 'defaultValue'> {
   value: number;
   onChangeText: (value: number) => void;
+  defaultValue?: number;
 }
 
-export function YearsInput({ value, onChangeText, ...props }: YearsInputProps) {
+export function YearsInput({ value, onChangeText, defaultValue, ...props }: YearsInputProps) {
   const [localValue, setLocalValue] = useState(value.toString());
+  const showReset = defaultValue !== undefined && value !== defaultValue;
+
+  useEffect(() => {
+    setLocalValue(value.toString());
+  }, [value]);
 
   function handleChangeText(text: string) {
     // Allow only numbers and one decimal point
@@ -32,6 +39,12 @@ export function YearsInput({ value, onChangeText, ...props }: YearsInputProps) {
     }
   }
 
+  function handleReset() {
+    if (defaultValue !== undefined) {
+      onChangeText(defaultValue);
+    }
+  }
+
   return (
     <Input
       {...props}
@@ -39,6 +52,8 @@ export function YearsInput({ value, onChangeText, ...props }: YearsInputProps) {
       onChangeText={handleChangeText}
       keyboardType="decimal-pad"
       rightElement="years"
+      showReset={showReset}
+      onReset={handleReset}
     />
   );
 }
