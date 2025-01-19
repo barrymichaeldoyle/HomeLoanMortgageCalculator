@@ -8,6 +8,7 @@ import '../global.css';
 import { Button } from '../components/Button';
 import { ScreenContainer } from '@/components/ScreenContainer';
 import { BottomBanner } from '@/components/BottomBanner';
+import { PRIME_LENDING_RATE_ZA } from '@/constants/constants';
 
 export default function Index() {
   verifyInstallation();
@@ -23,7 +24,7 @@ export default function Index() {
         </Button>
       </View>
 
-      <BottomBanner label="Current Prime Lending Rate" value="11.25%" />
+      <BottomBanner label="Current Prime Lending Rate" value={PRIME_LENDING_RATE_ZA} />
     </ScreenContainer>
   );
 }

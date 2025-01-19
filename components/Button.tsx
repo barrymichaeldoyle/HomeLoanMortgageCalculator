@@ -1,6 +1,6 @@
 import { Link, LinkProps } from 'expo-router';
 import { FC, ReactNode } from 'react';
-import { Pressable, Text, PressableProps, View } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
 import { colors } from '@/constants/colors';
@@ -8,7 +8,7 @@ import { colors } from '@/constants/colors';
 type ButtonProps = {
   children: ReactNode;
   href?: LinkProps['href'];
-  onPress?: PressableProps['onPress'];
+  onPress?: TouchableOpacityProps['onPress'];
   size?: 'sm' | 'md';
   outline?: boolean;
   fullWidth?: boolean;
@@ -27,14 +27,14 @@ export function Button({
   iconPosition = 'left',
 }: ButtonProps) {
   const buttonContent = (
-    <Pressable
+    <TouchableOpacity
       className={`
         flex-row items-center justify-center
         px-6 py-3 rounded-[12px]
         ${outline ? 'border bg-white border-primary-900' : 'bg-primary-900'}
         ${fullWidth ? 'w-full' : ''}
       `}
-      onPress={onPress}
+      onPressIn={onPress}
     >
       <View className="flex-row items-center justify-center gap-2">
         {Icon && iconPosition === 'left' && (
@@ -61,7 +61,7 @@ export function Button({
           />
         )}
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 
   if (href) {

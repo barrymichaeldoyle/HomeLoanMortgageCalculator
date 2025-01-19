@@ -20,6 +20,7 @@ export default function AffordabilityCalculator() {
         }}
       />
       <CurrencyInput label="Monthly Income" value={monthlyIncome} onChangeText={setMonthlyIncome} />
+      <CurrencyInput label="Monthly Income" value={monthlyIncome} onChangeText={setMonthlyIncome} />
     </ScreenContainer>
   );
 }

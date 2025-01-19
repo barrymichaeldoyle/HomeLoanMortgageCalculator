@@ -1,4 +1,5 @@
 import { Input, InputProps } from './Input';
+import { useState } from 'react';
 
 interface YearsInputProps extends Omit<InputProps, 'value' | 'onChangeText'> {
   value: number;
@@ -6,25 +7,37 @@ interface YearsInputProps extends Omit<InputProps, 'value' | 'onChangeText'> {
 }
 
 export function YearsInput({ value, onChangeText, ...props }: YearsInputProps) {
-  function handleChangeText(text: string) {
-    const cleaned = text.replace(/[^0-9]/g, '');
+  const [localValue, setLocalValue] = useState(value.toString());
 
-    if (cleaned === '') {
-      onChangeText(0);
-      return;
+  function handleChangeText(text: string) {
+    // Allow only numbers and one decimal point
+    const cleaned = text.replace(/[^\d.]/g, '').replace(/(\..*)\./g, '$1');
+
+    // Limit to 4 decimal places
+    const parts = cleaned.split('.');
+    if (parts.length > 1 && parts[1].length > 4) {
+      return; // Ignore input if it exceeds 4 decimal places
     }
-    const parsed = parseInt(cleaned, 10);
-    if (!isNaN(parsed) && parsed >= 0 && parsed <= 100) {
-      onChangeText(parsed);
+
+    setLocalValue(cleaned);
+
+    // Only convert to number if we have a valid decimal number
+    if (cleaned !== '' && cleaned !== '.') {
+      const parsed = parseFloat(cleaned);
+      if (!isNaN(parsed) && parsed >= 0 && parsed <= 100) {
+        onChangeText(parsed);
+      }
+    } else {
+      onChangeText(0);
     }
   }
 
   return (
     <Input
       {...props}
-      value={value === 0 ? '' : value.toString()}
+      value={localValue}
       onChangeText={handleChangeText}
-      keyboardType="number-pad"
+      keyboardType="decimal-pad"
       rightElement="years"
     />
   );

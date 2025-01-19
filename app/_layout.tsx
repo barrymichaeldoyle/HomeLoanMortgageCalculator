@@ -15,6 +15,8 @@ export default function RootLayout() {
         },
         headerTintColor: colors.neutral[100],
         headerTitle: () => <HeaderTitle Icon={HouseIcon}>Home Loan Calculator</HeaderTitle>,
+        animation: 'simple_push',
+        animationDuration: 250,
       }}
     />
   );

@@ -1,20 +1,28 @@
 import { Stack } from 'expo-router';
-import { useState } from 'react';
+import { View } from 'react-native';
 
 import RepaymentsIcon from '@/assets/icons/repayments.svg';
 import { HeaderTitle } from '@/components/HeaderTitle';
-import { ScreenContainer } from '@/components/ScreenContainer';
 import { CurrencyInput } from '@/components/input/CurrencyInput';
-import { View } from 'react-native';
-import { YearsInput } from '@/components/input/YearsInput';
 import { PercentageInput } from '@/components/input/PercentageInput';
+import { YearsInput } from '@/components/input/YearsInput';
+import { ScreenContainer } from '@/components/ScreenContainer';
+import { useRepaymentsStore } from '@/stores/repaymentsStore';
+import { RepaymentsBanner } from '@/components/repayments/RepaymentsBanner';
 
 export default function RepaymentsCalculator() {
-  const [purchasePrice, setPurchasePrice] = useState(1_500_000);
-  const [deposit, setDeposit] = useState(100_000);
-  const [monthlyServiceFee, setMonthlyServiceFee] = useState(69);
-  const [interestRate, setInterestRate] = useState(11.25);
-  const [repaymentPeriod, setRepaymentPeriod] = useState(30);
+  const {
+    purchasePrice,
+    deposit,
+    monthlyServiceFee,
+    interestRate,
+    repaymentPeriod,
+    setPurchasePrice,
+    setDeposit,
+    setMonthlyServiceFee,
+    setInterestRate,
+    setRepaymentPeriod,
+  } = useRepaymentsStore();
 
   return (
     <ScreenContainer>
@@ -46,13 +54,15 @@ export default function RepaymentsCalculator() {
           </View>
           <View className="flex-1">
             <YearsInput
-              label="Repayment Period"
+              label="Loan Term"
               value={repaymentPeriod}
               onChangeText={setRepaymentPeriod}
             />
           </View>
         </View>
       </View>
+
+      <RepaymentsBanner />
     </ScreenContainer>
   );
 }
