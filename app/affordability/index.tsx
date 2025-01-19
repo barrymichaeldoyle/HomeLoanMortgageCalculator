@@ -1,10 +1,10 @@
 import { Stack } from 'expo-router';
+import { useState } from 'react';
 
 import AffordabilityIcon from '@/assets/icons/affordability.svg';
 import { HeaderTitle } from '@/components/HeaderTitle';
 import { CurrencyInput } from '@/components/input/CurrencyInput';
 import { ScreenContainer } from '@/components/ScreenContainer';
-import { useState } from 'react';
 
 export default function AffordabilityCalculator() {
   const [monthlyIncome, setMonthlyIncome] = useState(100_000);

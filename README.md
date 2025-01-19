@@ -1,50 +1,19 @@
-# Welcome to your Expo app 👋
+# Home Loan Mortgage Calculator
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a little home loan calculator tool currently targeted towards the typical South African home buyer. But I have plans to expand it to suite other countries too.
 
-## Get started
+## Current Features
 
-1. Install dependencies
+- Affordability Calculator
+- Repayments Calculator
+- Pay Off Early Scenarios
 
-   ```bash
-   npm install
-   ```
+## Planned Features
 
-2. Start the app
+- Multi-locale support
 
-   ```bash
-    npx expo start
-   ```
+### TODO:
 
-In the output, you'll find options to open the app in a
+Given things like prime interest rates tend to change, I want to add a way for myself to go update those rates in a DB rather than needing to constantly update the codebase. This would also allow me to dynamically add more locales.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+There are also certain phrases that tend to be different across locales. E.g. "Home Loan" vs "Mortgage" etc. I'd like to add a way to dynamically update these phrases as well. I'm debating using something like i18n for this or just going with a custom db implementation.

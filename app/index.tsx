@@ -3,12 +3,12 @@ import { View } from 'react-native';
 
 import AffordabilityIcon from '@/assets/icons/affordability.svg';
 import RepaymentsIcon from '@/assets/icons/repayments.svg';
-
-import '../global.css';
-import { Button } from '../components/Button';
 import { ScreenContainer } from '@/components/ScreenContainer';
 import { BottomBanner } from '@/components/BottomBanner';
 import { PRIME_LENDING_RATE_ZA } from '@/constants/constants';
+
+import '../global.css';
+import { Button } from '../components/Button';
 
 export default function Index() {
   verifyInstallation();
@@ -24,7 +24,7 @@ export default function Index() {
         </Button>
       </View>
 
-      <BottomBanner label="Current Prime Lending Rate" value={PRIME_LENDING_RATE_ZA} />
+      <BottomBanner label="Current Prime Lending Rate" value={`${PRIME_LENDING_RATE_ZA}%`} />
     </ScreenContainer>
   );
 }
